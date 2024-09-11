@@ -7,8 +7,18 @@ def Spausdinti_lentele():
     print("|", lentele[6], "|", lentele[7], "|", lentele[8], "|")
 
 
+def ivestis():
+    while True:
+        pasirinkimas = input("Pasirinkite skaičių: ")
+        if pasirinkimas.isdigit() and 1 <= int(pasirinkimas) <= 9:
+            return int(pasirinkimas)
+        else:
+            print("Klaida: bandykite dar kartą")
+
+
 def Zaidejas_x():
-    pasirinkimas = int(input("Žaidėjo -X- pasirinkimas: "))
+    print("Žaidėjas -----X-----")
+    pasirinkimas = ivestis()
     match pasirinkimas:
         case 1: lentele[0] = "X"
         case 2: lentele[1] = "X"
@@ -25,7 +35,8 @@ def Zaidejas_x():
 
 
 def Zaidejas_o():
-    pasirinkimas = int(input("Žaidėjo -O- pasirinkimas: "))
+    print("Žaidėjas -----O-----")
+    pasirinkimas = ivestis()
     match pasirinkimas:
         case 1: lentele[0] = "O"
         case 2: lentele[1] = "O"
