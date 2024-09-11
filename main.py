@@ -1,7 +1,7 @@
 lentele = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 
-def Spausdinti_lentele():
+def spausdinti_lentele():
     print("\n|", lentele[0], "|", lentele[1], "|", lentele[2], "|")
     print("|", lentele[3], "|", lentele[4], "|", lentele[5], "|")
     print("|", lentele[6], "|", lentele[7], "|", lentele[8], "|")
@@ -16,7 +16,7 @@ def ivestis():
             print("Klaida: bandykite dar kartą")
 
 
-def Zaidejas_x():
+def zaidejas_x():
     print("Žaidėjas -----X-----")
     pasirinkimas = ivestis()
     match pasirinkimas:
@@ -30,11 +30,11 @@ def Zaidejas_x():
         case 8: lentele[7] = "X"
         case 9: lentele[8] = "X"
 
-    Spausdinti_lentele()
-    Tikrinimas_x()
+    spausdinti_lentele()
+    tikrinimas_x()
 
 
-def Zaidejas_o():
+def zaidejas_o():
     print("Žaidėjas -----O-----")
     pasirinkimas = ivestis()
     match pasirinkimas:
@@ -48,11 +48,11 @@ def Zaidejas_o():
         case 8: lentele[7] = "O"
         case 9: lentele[8] = "O"
 
-    Spausdinti_lentele()
-    Tikrinimas_o()
+    spausdinti_lentele()
+    tikrinimas_o()
 
 
-def Tikrinimas_x():
+def tikrinimas_x():
     if (((((((lentele[0] == lentele[1] == lentele[2] == "X" or
             lentele[3] == lentele[4] == lentele[5] == "X") or
             lentele[6] == lentele[7] == lentele[8] == "X") or
@@ -61,16 +61,16 @@ def Tikrinimas_x():
             lentele[2] == lentele[5] == lentele[8] == "X") or
             lentele[0] == lentele[4] == lentele[8] == "X") or
             lentele[2] == lentele[4] == lentele[6] == "X"):
-        print("\n-- Laimėjo -X- žaidėjas! --")
+        print("\n-- Laimėjo -- X -- žaidėjas! --")
     else:
         lygiuju_tikrinimas(lentele)
         if lygiuju_tikrinimas(lentele):
             print("\n-- Lygiosios! --")
         else:
-            Zaidejas_o()
+            zaidejas_o()
 
 
-def Tikrinimas_o():
+def tikrinimas_o():
     if (((((((lentele[0] == lentele[1] == lentele[2] == "O" or
             lentele[3] == lentele[4] == lentele[5] == "O") or
             lentele[6] == lentele[7] == lentele[8] == "O") or
@@ -79,14 +79,14 @@ def Tikrinimas_o():
             lentele[2] == lentele[5] == lentele[8] == "O") or
             lentele[0] == lentele[4] == lentele[8] == "O") or
             lentele[2] == lentele[4] == lentele[6] == "O"):
-        print("\n-- Laimėjo -O- žaidėjas! --")
+        print("\n-- Laimėjo -- O -- žaidėjas! --")
 
     else:
         lygiuju_tikrinimas(lentele)
         if lygiuju_tikrinimas(lentele):
-            print("\n-- Lygiosios! --")
+            print("\n-- Žaidimas baigėsi lygiosiomis! --")
         else:
-            Zaidejas_x()
+            zaidejas_x()
 
 
 def lygiuju_tikrinimas(lentele):
@@ -96,5 +96,6 @@ def lygiuju_tikrinimas(lentele):
     return True
 
 
-Spausdinti_lentele()
-Zaidejas_x()
+print("-- Kryžiukų - nuliukų žaidimas --")
+spausdinti_lentele()
+zaidejas_x()
