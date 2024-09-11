@@ -1,5 +1,6 @@
 lentele = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
+
 def Spausdinti_lentele():
     print("\n|", lentele[0], "|", lentele[1], "|", lentele[2], "|")
     print("|", lentele[3], "|", lentele[4], "|", lentele[5], "|")
@@ -49,9 +50,13 @@ def Tikrinimas_x():
             lentele[2] == lentele[5] == lentele[8] == "X") or
             lentele[0] == lentele[4] == lentele[8] == "X") or
             lentele[2] == lentele[4] == lentele[6] == "X"):
-        print("\nLaimėjo -X- žaidėjas!")
+        print("\n-- Laimėjo -X- žaidėjas! --")
     else:
-        Zaidejas_o()
+        lygiuju_tikrinimas(lentele)
+        if lygiuju_tikrinimas(lentele):
+            print("\n-- Lygiosios! --")
+        else:
+            Zaidejas_o()
 
 
 def Tikrinimas_o():
@@ -63,9 +68,22 @@ def Tikrinimas_o():
             lentele[2] == lentele[5] == lentele[8] == "O") or
             lentele[0] == lentele[4] == lentele[8] == "O") or
             lentele[2] == lentele[4] == lentele[6] == "O"):
-        print("\nLaimėjo -O- žaidėjas!")
+        print("\n-- Laimėjo -O- žaidėjas! --")
+
     else:
-        Zaidejas_x()
+        lygiuju_tikrinimas(lentele)
+        if lygiuju_tikrinimas(lentele):
+            print("\n-- Lygiosios! --")
+        else:
+            Zaidejas_x()
+
+
+def lygiuju_tikrinimas(lentele):
+    for langelis in lentele:
+        if isinstance(langelis, (int, float)):
+            return False
+    return True
+
 
 Spausdinti_lentele()
 Zaidejas_x()
