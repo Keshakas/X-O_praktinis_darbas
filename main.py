@@ -9,26 +9,20 @@ def spausdinti_lentele():
 
 def ivestis():
     while True:
-        pasirinkimas = input("Pasirinkite skaičių: ")
+        pasirinkimas = input("Pasirinkite skaičių (1-9): ")
         if pasirinkimas.isdigit() and 1 <= int(pasirinkimas) <= 9:
-            return int(pasirinkimas)
+            if lentele[int(pasirinkimas) - 1] not in ["X", "O"]:
+                return int(pasirinkimas)
+            else:
+                print("Klaida: Ši vieta jau užimta. Bandykite kitą skaičių.")
         else:
-            print("Klaida: bandykite dar kartą")
+            print("Klaida: netinkamas simbolis")
 
 
 def zaidejas_x():
     print("Žaidėjas -----X-----")
     pasirinkimas = ivestis()
-    match pasirinkimas:
-        case 1: lentele[0] = "X"
-        case 2: lentele[1] = "X"
-        case 3: lentele[2] = "X"
-        case 4: lentele[3] = "X"
-        case 5: lentele[4] = "X"
-        case 6: lentele[5] = "X"
-        case 7: lentele[6] = "X"
-        case 8: lentele[7] = "X"
-        case 9: lentele[8] = "X"
+    lentele[pasirinkimas - 1] = "X"
 
     spausdinti_lentele()
     tikrinimas_x()
@@ -37,16 +31,7 @@ def zaidejas_x():
 def zaidejas_o():
     print("Žaidėjas -----O-----")
     pasirinkimas = ivestis()
-    match pasirinkimas:
-        case 1: lentele[0] = "O"
-        case 2: lentele[1] = "O"
-        case 3: lentele[2] = "O"
-        case 4: lentele[3] = "O"
-        case 5: lentele[4] = "O"
-        case 6: lentele[5] = "O"
-        case 7: lentele[6] = "O"
-        case 8: lentele[7] = "O"
-        case 9: lentele[8] = "O"
+    lentele[pasirinkimas - 1] = "O"
 
     spausdinti_lentele()
     tikrinimas_o()
@@ -65,7 +50,7 @@ def tikrinimas_x():
     else:
         lygiuju_tikrinimas(lentele)
         if lygiuju_tikrinimas(lentele):
-            print("\n-- Lygiosios! --")
+            print("\n-- Žaidimas baigėsi lygiosiomis! --")
         else:
             zaidejas_o()
 
@@ -91,11 +76,11 @@ def tikrinimas_o():
 
 def lygiuju_tikrinimas(lentele):
     for langelis in lentele:
-        if isinstance(langelis, (int, float)):
+        if isinstance(langelis, int):
             return False
     return True
 
 
-print("-- Kryžiukų - nuliukų žaidimas --")
+print("\n-- Kryžiukų - nuliukų žaidimas --")
 spausdinti_lentele()
 zaidejas_x()
