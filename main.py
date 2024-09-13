@@ -1,3 +1,5 @@
+import random
+
 lentele = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 
 
@@ -81,6 +83,14 @@ def lygiuju_tikrinimas(lentele):
     return True
 
 
+def zaidimo_pradzia():
+    num = random.randint(1, 2)
+    if num == 1:
+        zaidejas_x()
+    else:
+        zaidejas_o()
+
+
 print("\n-- Kryžiukų - nuliukų žaidimas --")
 spausdinti_lentele()
-zaidejas_x()
+zaidimo_pradzia()
