@@ -35,78 +35,60 @@ def zaidejas_x():
     print("Žaidėjas -----X-----")
     pasirinkimas = ivestis()
     lentele[pasirinkimas - 1] = "X"
-
     spausdinti_lentele()
-    tikrinimas_x()
+    laimejimo_tikrinimas("X")
 
 
 def zaidejas_o():
     print("Žaidėjas -----O-----")
     pasirinkimas = ivestis()
     lentele[pasirinkimas - 1] = "O"
-
     spausdinti_lentele()
-    tikrinimas_o()
+    laimejimo_tikrinimas("O")
 
 
-def komoiuteris_o():
+def kompiuteris_o():
     print("\nŽaidėjas -----O-----")
     pasirinkimas = kompiuterio_ivestis()
     print(f"Kompiuteris pasirinko {pasirinkimas}")
     lentele[pasirinkimas - 1] = "O"
-
     spausdinti_lentele()
-    tikrinimas_o()
+    laimejimo_tikrinimas("O")
 
 
-def tikrinimas_x():
-    global rezultatas_x, lentele, komp_zaidimas
-    if (((((((lentele[0] == lentele[1] == lentele[2] == "X" or
-            lentele[3] == lentele[4] == lentele[5] == "X") or
-            lentele[6] == lentele[7] == lentele[8] == "X") or
-            lentele[0] == lentele[3] == lentele[6] == "X") or
-            lentele[1] == lentele[4] == lentele[7] == "X") or
-            lentele[2] == lentele[5] == lentele[8] == "X") or
-            lentele[0] == lentele[4] == lentele[8] == "X") or
-            lentele[2] == lentele[4] == lentele[6] == "X"):
-        print("\n-- Laimėjo -- X -- žaidėjas! --")
-        rezultatas_x += 1
+def laimejimo_tikrinimas(simbolis):
+    global rezultatas_x, rezultatas_k, rezultatas_o, lentele, komp_zaidimas
+    if (((((((lentele[0] == lentele[1] == lentele[2] == simbolis or
+            lentele[3] == lentele[4] == lentele[5] == simbolis) or
+            lentele[6] == lentele[7] == lentele[8] == simbolis) or
+            lentele[0] == lentele[3] == lentele[6] == simbolis) or
+            lentele[1] == lentele[4] == lentele[7] == simbolis) or
+            lentele[2] == lentele[5] == lentele[8] == simbolis) or
+            lentele[0] == lentele[4] == lentele[8] == simbolis) or
+            lentele[2] == lentele[4] == lentele[6] == simbolis):
+        print(f"\n-- Laimėjo -- {simbolis} -- žaidėjas! --")
         lentele = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-        komp_zaidimas = False
-    else:
-        if lygiuju_tikrinimas(lentele):
-            print("\n-- Žaidimas baigėsi lygiosiomis! --")
-            lentele = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-        else:
-            if komp_zaidimas:
-                komoiuteris_o()
-            else:
-                zaidejas_o()
-
-
-def tikrinimas_o():
-    global rezultatas_o, lentele, rezultatas_k, komp_zaidimas
-    if (((((((lentele[0] == lentele[1] == lentele[2] == "O" or
-            lentele[3] == lentele[4] == lentele[5] == "O") or
-            lentele[6] == lentele[7] == lentele[8] == "O") or
-            lentele[0] == lentele[3] == lentele[6] == "O") or
-            lentele[1] == lentele[4] == lentele[7] == "O") or
-            lentele[2] == lentele[5] == lentele[8] == "O") or
-            lentele[0] == lentele[4] == lentele[8] == "O") or
-            lentele[2] == lentele[4] == lentele[6] == "O"):
-        print("\n-- Laimėjo -- O -- žaidėjas! --")
-        lentele = [1, 2, 3, 4, 5, 6, 7, 8, 9]
-        if komp_zaidimas:
+        if komp_zaidimas and simbolis == "O":
             rezultatas_k += 1
         else:
-            rezultatas_o += 1
+            if simbolis == "O":
+                rezultatas_o += 1
+            else:
+                rezultatas_x += 1
         komp_zaidimas = False
     else:
         if lygiuju_tikrinimas(lentele):
             print("\n-- Žaidimas baigėsi lygiosiomis! --")
             lentele = [1, 2, 3, 4, 5, 6, 7, 8, 9]
         else:
-            zaidejas_x()
+            if komp_zaidimas and simbolis == "X":
+                kompiuteris_o()
+            else:
+                if simbolis == "O":
+                    zaidejas_x()
+                else:
+                    if simbolis == "X":
+                        zaidejas_o()
 
 
 def lygiuju_tikrinimas(lentele):
@@ -147,4 +129,4 @@ while True:
             case 4:
                 break
     except ValueError:
-        print("Pasirinkte skaičių 1-3)")
+        print("Pasirinkte skaičių 1-4)")
