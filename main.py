@@ -80,6 +80,7 @@ def laimejimo_tikrinimas(simbolis):
         if lygiuju_tikrinimas(lentele):
             print("\n-- Žaidimas baigėsi lygiosiomis! --")
             lentele = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+            komp_zaidimas = False
         else:
             if komp_zaidimas and simbolis == "X":
                 kompiuteris_o()
