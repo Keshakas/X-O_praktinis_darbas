@@ -114,7 +114,7 @@ def zaidimo_pradzia():
 print("\n-- KRYŽIUKŲ - NULIUKŲ ŽAIDIMAS --")
 while True:
     try:
-        pasirinkimas = int(input("\n1 - Žaisti dviems  \n2 - Žaisti su kompiuteriu \n3 - Rezultatas \n4 - Išeiti \n"))
+        pasirinkimas = int(input("\n1 - Žaisti dviems žaidėjams  \n2 - Žaisti su kompiuteriu \n3 - Rezultatas \n4 - Išeiti \n"))
         match pasirinkimas:
             case 1:
                 print("Pirmasis žaidimo ėjimas \nparenkamas atsitiktine tvarka")
